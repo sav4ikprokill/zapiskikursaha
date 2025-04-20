@@ -3,13 +3,20 @@ const mongoose = require('mongoose');
 const noteRoutes = require('./routes/noteRoutes');
 const path = require('path');
 const app = express();
+require('dotenv').config();
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://localhost:27017/notesdb')
-  .then(() => console.log('✅ Успешное подключение к MongoDB'))
-  .catch(err => console.error('Ошибка подключения к MongoDB:', err));
+// Подключение к MongoDB Atlas
+const mongoURI = 'mongodb+srv://admin:kurspass123@cluster0.ahkko0m.mongodb.net/zapiskikursaha?retryWrites=true&w=majority&appName=Cluster0';
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => console.log('✅ MongoDB подключена'))
+  .catch(err => console.error('❌ Ошибка подключения к MongoDB:', err));
 
 app.use('/api', noteRoutes);
 
