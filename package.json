@@ -1,7 +1,14 @@
 {
+  "name": "zapiskikursaha",
+  "version": "1.0.0",
+  "description": "Приложение для заметок",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "mongoose": "^8.13.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2"
   }
 }
